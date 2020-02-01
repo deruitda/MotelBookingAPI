@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking", "MotelBooking\MotelBooking.csproj", "{E15C349C-7147-4F9C-90EA-A7331E276580}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking.Models", "MotelBooking.Models\MotelBooking.Models.csproj", "{1A1E117B-6D9A-43EB-A93E-5D329E11E7B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking.Tests", "MotelBooking.Tests\MotelBooking.Tests.csproj", "{1B486093-EAB9-4100-B4CC-0AA1F205ABA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking.DataAccess", "MotelBooking.DataAccess\MotelBooking.DataAccess.csproj", "{0C4CBB6B-82D1-42C7-AECB-9DA3FF4333E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{E15C349C-7147-4F9C-90EA-A7331E276580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E15C349C-7147-4F9C-90EA-A7331E276580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E15C349C-7147-4F9C-90EA-A7331E276580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A1E117B-6D9A-43EB-A93E-5D329E11E7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A1E117B-6D9A-43EB-A93E-5D329E11E7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A1E117B-6D9A-43EB-A93E-5D329E11E7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A1E117B-6D9A-43EB-A93E-5D329E11E7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B486093-EAB9-4100-B4CC-0AA1F205ABA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B486093-EAB9-4100-B4CC-0AA1F205ABA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B486093-EAB9-4100-B4CC-0AA1F205ABA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B486093-EAB9-4100-B4CC-0AA1F205ABA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C4CBB6B-82D1-42C7-AECB-9DA3FF4333E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C4CBB6B-82D1-42C7-AECB-9DA3FF4333E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C4CBB6B-82D1-42C7-AECB-9DA3FF4333E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C4CBB6B-82D1-42C7-AECB-9DA3FF4333E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
