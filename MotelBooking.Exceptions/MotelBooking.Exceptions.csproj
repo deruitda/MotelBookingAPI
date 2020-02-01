@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MotelBooking.Exceptions\MotelBooking.Exceptions.csproj" />
-  </ItemGroup>
-
 </Project>

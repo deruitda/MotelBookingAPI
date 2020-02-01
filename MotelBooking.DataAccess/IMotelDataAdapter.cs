@@ -8,5 +8,7 @@ namespace MotelBooking.DataAccess
     {
         Task<List<MotelRoom>> GetRoomsAvailableAsync();
         Task<List<MotelRoom>> GetAllRoomsAsync();
+        Task<MotelRoom> BookRoomAsync(int roomNum, int numPets, bool needsAccessibility);
+        Task<MotelRoom> BookAvailableRoomAsync(int numBeds, int numPets, bool needsAccessibility);
     }
 }

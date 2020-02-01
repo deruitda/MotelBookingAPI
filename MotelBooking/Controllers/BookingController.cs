@@ -20,15 +20,43 @@ namespace MotelBooking.Controllers
         }
         // GET: api/Booking
         [HttpGet]
+        [Route("GetRoomsAvailable")]
         public async Task<List<MotelRoom>> GetRoomsAvailable()
-        {
+        {                        
             return await _dataAdapter.GetRoomsAvailableAsync();
         }
 
         // POST: api/Booking
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("BookRoomByNumber")]
+        public async Task<ActionResult> BookRoomByNumber(int roomNum, int numPets, bool needsAccessibility)
         {
+            try
+            {
+                MotelRoom room = await _dataAdapter.BookRoomAsync(roomNum, numPets, needsAccessibility);
+
+                return Created("api/Booking/BookRoom", $"Successfully booked room {room.RoomNum}. Final cost is: {room.TotalCost}"); //return a 201 indicating the room was booked successfully
+            }
+            catch (RoomBookingException ex)
+            {
+                return BadRequest(ex.BookingMessage);
+            }
+        }
+
+        [HttpPost]
+        [Route("BookRoomByCriteria")]
+        public async Task<ActionResult> BookRoomByProperties(int numBeds, int numPets, bool needsAccessibility)
+        {
+            try
+            {
+                MotelRoom room = await _dataAdapter.BookAvailableRoomAsync(numBeds, numPets, needsAccessibility);
+
+                return Created("api/Booking/BookRoom", $"Successfully booked room {room.RoomNum}. Final cost is: {room.TotalCost}"); //return a 201 indicating the room was booked successfully
+            }
+            catch (RoomBookingException ex)
+            {
+                return BadRequest(ex.BookingMessage);
+            }
         }
 
         // PUT: api/Booking/5
