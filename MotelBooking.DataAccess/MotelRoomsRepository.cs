@@ -78,12 +78,28 @@ namespace MotelBooking.DataAccess
             //fake some async operation like searching a DB of rooms available
             await Task.Run(() =>
             {
-                //search for a room that has the number of beds requred, allows pets, and is accessible if needed
-                room = _roomsAvailable.FirstOrDefault(r =>
-                                                        r.NumBeds == numBeds
-                                                        && (numPets > 0 && r.AllowsPets() || numPets == 0)
-                                                        && (needsAccessibility && r.IsHandicapAccessible() || !needsAccessibility)
-                                                      );
+                //if they are not in need of special accomodations, check the second floor first so that we can save
+                //rooms on the first floor for those who need them
+                if(numPets == 0 && !needsAccessibility)
+                {
+                    //search for a free room on the second floor with the appropriate number of beds
+                    room = _roomsAvailable.FirstOrDefault(r =>
+                                                            r.Floor == 2 
+                                                            && r.NumBeds == numBeds                                        
+                                                          );
+                }
+
+                //if room  is still empty at this point, they either need special accomodations or we coulnd't find a room
+                //on the second floor 
+                if(room == null)
+                {
+                    //search for a room that has the number of beds requred, allows pets, and is accessible if needed
+                    room = _roomsAvailable.FirstOrDefault(r =>
+                                                            r.NumBeds == numBeds
+                                                            && (numPets > 0 && r.AllowsPets() || numPets == 0)
+                                                            && (needsAccessibility && r.IsHandicapAccessible() || !needsAccessibility)
+                                                          );
+                }
             });
 
             return room;
