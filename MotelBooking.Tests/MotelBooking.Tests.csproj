@@ -17,7 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MotelBooking.DataAccess\MotelBooking.DataAccess.csproj" />
     <ProjectReference Include="..\MotelBooking.Models\MotelBooking.Models.csproj" />
-    <ProjectReference Include="..\MotelBooking\MotelBooking.csproj" />
+    <ProjectReference Include="..\MotelBooking\MotelBookingAPI.csproj" />
   </ItemGroup>
 
 </Project>

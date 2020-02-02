@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking", "MotelBooking\MotelBooking.csproj", "{E15C349C-7147-4F9C-90EA-A7331E276580}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotelBookingAPI", "MotelBooking\MotelBookingAPI.csproj", "{E15C349C-7147-4F9C-90EA-A7331E276580}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking.Models", "MotelBooking.Models\MotelBooking.Models.csproj", "{1A1E117B-6D9A-43EB-A93E-5D329E11E7B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotelBooking.Models", "MotelBooking.Models\MotelBooking.Models.csproj", "{1A1E117B-6D9A-43EB-A93E-5D329E11E7B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking.Tests", "MotelBooking.Tests\MotelBooking.Tests.csproj", "{1B486093-EAB9-4100-B4CC-0AA1F205ABA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotelBooking.Tests", "MotelBooking.Tests\MotelBooking.Tests.csproj", "{1B486093-EAB9-4100-B4CC-0AA1F205ABA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking.DataAccess", "MotelBooking.DataAccess\MotelBooking.DataAccess.csproj", "{0C4CBB6B-82D1-42C7-AECB-9DA3FF4333E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotelBooking.DataAccess", "MotelBooking.DataAccess\MotelBooking.DataAccess.csproj", "{0C4CBB6B-82D1-42C7-AECB-9DA3FF4333E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotelBooking.Exceptions", "MotelBooking.Exceptions\MotelBooking.Exceptions.csproj", "{B3810618-CD05-4CCA-882B-9B2699919547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotelBooking.Exceptions", "MotelBooking.Exceptions\MotelBooking.Exceptions.csproj", "{B3810618-CD05-4CCA-882B-9B2699919547}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
