@@ -197,6 +197,8 @@ namespace MotelBooking.Tests
             Assert.AreEqual(((ObjectResult)a).StatusCode, 400); //check for OK status
         }
         #endregion
+
+        
     }
 
 }
