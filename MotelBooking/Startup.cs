@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MotelBooking.DataAccess;
+using MotelBooking.DataAccess.Interfaces;
 
 namespace MotelBooking
 {
@@ -29,6 +30,8 @@ namespace MotelBooking
         {
             services.AddSingleton<IMotelRoomsRepository, MotelRoomsRepository>();
             services.AddSingleton<IMotelDataAdapter, MotelDataAdapter>();
+            services.AddTransient<IBookingProcessor, BookingProcessor>();
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

@@ -1,14 +1,13 @@
 ﻿using MotelBooking.Models;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace MotelBooking.DataAccess
+namespace MotelBooking.DataAccess.Interfaces
 {
-    public interface IMotelRoomsRepository
+    public interface IBookingProcessor
     {
-        Task<List<MotelRoom>> GetListOfAllRoomsAsync();
-        Task<MotelRoom> FindRoomByNumber(int roomNum);
-        Task<List<MotelRoom>> GetListOfAvailableRoomsAsync();
         Task<MotelRoom> BookRoomAsync(int roomNum, int numPets, bool needsAccessibility);
         Task<MotelRoom> BookAvailableRoomAsync(int numBeds, int numPets, bool needsAccessibility);
     }

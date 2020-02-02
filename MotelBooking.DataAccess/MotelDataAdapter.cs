@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MotelBooking.DataAccess.Interfaces;
 using MotelBooking.Models;
 
 namespace MotelBooking.DataAccess
 {
     public class MotelDataAdapter : IMotelDataAdapter
     {
+        private IBookingProcessor _processor;
         private IMotelRoomsRepository _repo;
-        public MotelDataAdapter(IMotelRoomsRepository repo)
+        public MotelDataAdapter(IBookingProcessor processor, IMotelRoomsRepository repo)
         {
-            this._repo = repo;
+            _processor = processor;
+            _repo = repo;
         }
 
         public async Task<MotelRoom> BookRoomAsync(int roomNum, int numPets, bool needsAccessibility)
         {
-            return await _repo.BookRoomAsync(roomNum, numPets, needsAccessibility);
+            return await _processor.BookRoomAsync(roomNum, numPets, needsAccessibility);
         }
 
         public async Task<MotelRoom> BookAvailableRoomAsync(int numBeds, int numPets, bool needsAccessibility)
         {
-            return await _repo.BookAvailableRoomAsync(numBeds, numPets, needsAccessibility);
+            return await _processor.BookAvailableRoomAsync(numBeds, numPets, needsAccessibility);
         }
 
         public async Task<List<MotelRoom>> GetAllRoomsAsync()
