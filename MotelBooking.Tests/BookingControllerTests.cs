@@ -170,6 +170,33 @@ namespace MotelBooking.Tests
             Assert.AreEqual(((ObjectResult)a).StatusCode, 400);
         }
         #endregion
+
+        #region Remove Reservations
+        [TestMethod]
+        public async Task Remove_Reservation_Booked()
+        {
+            IMotelRoomsRepository repo = new MotelRoomsRepository();
+            IMotelDataAdapter da = new MotelDataAdapter(new BookingProcessor(repo), repo);
+
+            BookingController controller = new BookingController(da);
+            await controller.BookRoomByNumber(101, 0, false); //book room 101
+            IActionResult a = await controller.RemoveReservation(101); //remove its reservation
+
+            Assert.AreEqual(((ObjectResult)a).StatusCode, 200); //check for OK status
+        }
+
+        [TestMethod]
+        public async Task Remove_Reservation_Not_Booked()
+        {
+            IMotelRoomsRepository repo = new MotelRoomsRepository();
+            IMotelDataAdapter da = new MotelDataAdapter(new BookingProcessor(repo), repo);
+
+            BookingController controller = new BookingController(da);
+            IActionResult a = await controller.RemoveReservation(101); //remove reservation from room 101, ex will be thrown which will be caught by controller
+
+            Assert.AreEqual(((ObjectResult)a).StatusCode, 400); //check for OK status
+        }
+        #endregion
     }
 
 }
