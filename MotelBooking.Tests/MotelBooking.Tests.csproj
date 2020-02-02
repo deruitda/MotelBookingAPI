@@ -20,4 +20,8 @@
     <ProjectReference Include="..\MotelBooking\MotelBookingAPI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestData\" />
+  </ItemGroup>
+
 </Project>

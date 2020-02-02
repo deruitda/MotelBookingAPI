@@ -1,4 +1,5 @@
-﻿using MotelBooking.Models;
+﻿using MotelBooking.Controllers;
+using MotelBooking.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace MotelBooking.DataAccess
         private List<MotelRoom> _allRooms;
         private List<MotelRoom> _roomsAvailable;
         private List<MotelRoom> _roomsBooked;
+
+        public List<MotelRoom> AllRooms { get => _allRooms; }
+        public List<MotelRoom> RoomsAvailable { get => _roomsAvailable; }
+        public List<MotelRoom> RoomsBooked { get => _roomsBooked; }
 
         public MotelRoomsRepository()
         {
@@ -56,55 +61,23 @@ namespace MotelBooking.DataAccess
         public async Task<List<MotelRoom>> GetListOfAvailableRoomsAsync()
         {
             return await Task.Run(() => _roomsAvailable);
-        }
-
-        public async Task<MotelRoom> FindRoomByNumber(int roomNum)
-        {
-            MotelRoom room = null;
-
-            await Task.Run(() => room = _roomsAvailable.FirstOrDefault(r => r.RoomNum == roomNum));
-
-            return room;
-        }
-
-        public async Task<MotelRoom> FindRoomByProperties(int numBeds, int numPets, bool needsAccessibility)
-        {
-            MotelRoom room = null;
-
-            //fake some async operation like searching a DB of rooms available
-            await Task.Run(() =>
-            {
-                //if they are not in need of special accomodations, check the second floor first so that we can save
-                //rooms on the first floor for those who need them
-                if(numPets == 0 && !needsAccessibility)
-                {
-                    //search for a free room on the second floor with the appropriate number of beds
-                    room = _roomsAvailable.FirstOrDefault(r =>
-                                                            r.Floor == 2 
-                                                            && r.NumBeds == numBeds                                        
-                                                          );
-                }
-
-                //if room  is still empty at this point, they either need special accomodations or we coulnd't find a room
-                //on the second floor 
-                if(room == null)
-                {
-                    //search for a room that has the number of beds requred, allows pets, and is accessible if needed
-                    room = _roomsAvailable.FirstOrDefault(r =>
-                                                            r.NumBeds == numBeds
-                                                            && (numPets > 0 && r.AllowsPets() || numPets == 0)
-                                                            && (needsAccessibility && r.IsHandicapAccessible() || !needsAccessibility)
-                                                          );
-                }
-            });
-
-            return room;
-        }
+        }        
 
         public void AddBookedRoom(MotelRoom room)
         {
             _roomsBooked.Add(room);
             _roomsAvailable.Remove(room);
+        }
+
+        public async Task RemoveReservation(int roomNum)
+        {
+            MotelRoom room = _roomsBooked.FirstOrDefault(r => r.RoomNum == roomNum);
+
+            if (room == null)
+                throw new ReservationRemovalException($"Room {roomNum} is not booked or does not exist");
+
+            _roomsAvailable.Add(room);
+            _roomsBooked.Remove(room);
         }
     }
 }

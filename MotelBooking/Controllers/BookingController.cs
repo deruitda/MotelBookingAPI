@@ -29,7 +29,7 @@ namespace MotelBooking.Controllers
         // POST: api/Booking
         [HttpPost]
         [Route("BookRoomByNumber")]
-        public async Task<ActionResult> BookRoomByNumber(int roomNum, int numPets, bool needsAccessibility)
+        public async Task<IActionResult> BookRoomByNumber(int roomNum, int numPets, bool needsAccessibility)
         {
             try
             {
@@ -39,13 +39,14 @@ namespace MotelBooking.Controllers
             }
             catch (RoomBookingException ex)
             {
+                //just return 400 indicating there was an issue with the request they sent in
                 return BadRequest(ex.BookingMessage);
             }
         }
 
         [HttpPost]
         [Route("BookRoomByCriteria")]
-        public async Task<ActionResult> BookRoomByProperties(int numBeds, int numPets, bool needsAccessibility)
+        public async Task<IActionResult> BookRoomByProperties(int numBeds, int numPets, bool needsAccessibility)
         {
             try
             {
@@ -55,20 +56,25 @@ namespace MotelBooking.Controllers
             }
             catch (RoomBookingException ex)
             {
+                //just return 400 indicating there was an issue with the request they sent in
                 return BadRequest(ex.BookingMessage);
             }
         }
 
-        // PUT: api/Booking/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpDelete]
+        [Route("RemoveReservation")]
+        public async Task<IActionResult> RemoveReservation(int roomNum)
         {
-        }
+            try
+            {
+                await _dataAdapter.RemoveReservationAsync(roomNum);
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                return Ok($"Successfully removed reservation for room {roomNum}");
+            }
+            catch (ReservationRemovalException ex)
+            {
+                return BadRequest(ex.RemovalMessage);
+            }
         }
     }
 }

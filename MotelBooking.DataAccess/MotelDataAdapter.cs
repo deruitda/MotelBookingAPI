@@ -35,5 +35,10 @@ namespace MotelBooking.DataAccess
         {
             return await _repo.GetListOfAvailableRoomsAsync();
         }
+
+        public async Task RemoveReservationAsync(int roomNum)
+        {
+            await _repo.RemoveReservation(roomNum);
+        }
     }
 }
